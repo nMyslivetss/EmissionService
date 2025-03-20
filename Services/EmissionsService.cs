@@ -1,10 +1,6 @@
 ﻿using EmissionService.Data;
 using EmissionService.DTOs;
-using EmissionService.Models;
-using EmissionService.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Globalization;
 
 namespace EmissionService.Services
 {
@@ -21,16 +17,13 @@ namespace EmissionService.Services
             var query = _context.EmissionRecords.AsQueryable();
 
             // Filter by CustomerName
-            if (request.CustomerName != null && request.CustomerName.Any())
-            {
+            //if (request.CustomerName != null && request.CustomerName.Any())
+            if (request.CustomerName?.Any() ?? false)
                 query = query.Where(e => request.CustomerName.Contains(e.Customer));
-            }
 
             // Filter by CustomerId
-            if (request.CustomerId != null && request.CustomerId.Any())
-            {
+            if (request.CustomerId?.Any() ?? false)
                 query = query.Where(e => request.CustomerId.Contains(e.CustomerId));
-            }
 
             // Filter by PeriodStart
             if (request.PeriodStart.HasValue)
@@ -49,19 +42,14 @@ namespace EmissionService.Services
             }
 
             // Filter by FacilityId
-            if (request.FacilityId != null && request.FacilityId.Any())
-            {
+            if (request.FacilityId?.Any() ?? false)
                 query = query.Where(e => request.FacilityId.Contains(e.FacilityId.Value));
-            }
 
             // Filter by FacilityCode
-            if (request.FacilityCode != null && request.FacilityCode.Any())
-            {
+            if (request.FacilityCode?.Any() ?? false)
                 query = query.Where(e => request.FacilityCode.Contains(e.FacilityCode));
-            }
 
-
-            // Выполняем запрос
+            // Execute the request
             var emissions = await query.Select(e => new EmissionResponseDto
             {
                 Customer = e.Customer,
