@@ -1,0 +1,11 @@
+﻿namespace EmissionService.Models
+{
+    public class EmissionValues
+    {
+        public int Id { get; set; }
+        public decimal CO2 { get; set; }
+        public decimal CO2e { get; set; }
+        public decimal CH4 { get; set; }
+        public decimal N2O { get; set; }
+    }
+}
