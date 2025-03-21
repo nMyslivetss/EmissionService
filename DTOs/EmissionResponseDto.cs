@@ -3,11 +3,11 @@
     public class EmissionResponseDto
     {
         public required string Customer { get; set; }
-        public long CustomerId { get; set; }
+        public required long CustomerId { get; set; }
         public long? FacilityId { get; set; }
         public string? FacilityCode { get; set; }
         public string? Commodity { get; set; }
-        public DateTime Month { get; set; }
+        public required DateTime Month { get; set; }
         public int? Scope { get; set; }
 
         public string? LocationBasedProfile1 { get; set; }

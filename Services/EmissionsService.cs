@@ -17,7 +17,6 @@ namespace EmissionService.Services
             var query = _context.EmissionRecords.AsQueryable();
 
             // Filter by CustomerName
-            //if (request.CustomerName != null && request.CustomerName.Any())
             if (request.CustomerName?.Any() ?? false)
                 query = query.Where(e => request.CustomerName.Contains(e.Customer));
 
@@ -26,9 +25,9 @@ namespace EmissionService.Services
                 query = query.Where(e => request.CustomerId.Contains(e.CustomerId));
 
             // Filter by PeriodStart
-            if (request.PeriodStart.HasValue)
+            if (request.PeriodStart != null)
             {
-                var periodStart = request.PeriodStart.Value;
+                var periodStart = request.PeriodStart;
                 query = query.Where(e => e.Month.Year > periodStart.Year ||
                                          (e.Month.Year == periodStart.Year && e.Month.Month >= periodStart.Month));
             }

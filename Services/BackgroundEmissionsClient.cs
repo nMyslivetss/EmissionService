@@ -15,8 +15,8 @@ namespace EmissionService.Services
         {
             var queryParams = new List<KeyValuePair<string, string?>>();
 
-            if (request.PeriodStart.HasValue)
-                queryParams.Add(new KeyValuePair<string, string?>("PeriodStart", request.PeriodStart.Value.ToString("o")));
+            if (request.PeriodStart != null)
+                queryParams.Add(new KeyValuePair<string, string?>("PeriodStart", request.PeriodStart.ToString("o")));
 
             if (request.PeriodEnd.HasValue)
                 queryParams.Add(new KeyValuePair<string, string?>("PeriodEnd", request.PeriodEnd.Value.ToString("o")));

@@ -9,7 +9,7 @@ namespace EmissionService.DTOs
         public List<long>? FacilityId { get; set; }
         public List<string>? FacilityCode { get; set; }
         public List<string>? Commodity { get; set; }
-        public required DateTime? PeriodStart { get; set; }
+        public required DateTime PeriodStart { get; set; }
         public DateTime? PeriodEnd { get; set; }
     }
 }
